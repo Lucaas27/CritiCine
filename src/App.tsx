@@ -5,8 +5,10 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-  console.log(process.env.NODE_ENV)
-  console.log(import.meta.env)
+  console.log('node_env', process.env.NODE_ENV)
+  console.log('dev', import.meta.env.DEV)
+  console.log('prod', import.meta.env.PROD)
+  console.log('import.meta.env', import.meta.env)
   return (
     <>
       <div>
@@ -23,6 +25,8 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
+        <p>{import.meta.env.VITE_HELLO}</p>
+        <p>{import.meta.env.VITE_PORT}</p>
       </div>
       <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
     </>

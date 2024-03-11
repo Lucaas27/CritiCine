@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  criticine-staging:
+    networks:
+      - nginx_default
+    ports:
+      - '${PORT_STAGING}:3000'
+    container_name: criticine-staging
+    image: '${STAGING_TAG}'
+    build:
+      context: .
+      dockerfile: dockerfile
+      target: prod
+networks:
+  nginx_default:
+    external: true
