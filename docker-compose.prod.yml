@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  criticine-prod:
+    networks:
+      - nginx_default
+    ports:
+      - '3003:3003'
+    container_name: criticine-prod
+    image: lucas2708/criticine:latest
+    build:
+      context: .
+      dockerfile: dockerfile
+      target: prod
+networks:
+  nginx_default:
+    external: true

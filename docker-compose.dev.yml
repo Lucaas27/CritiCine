@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  criticine-dev:
+    ports:
+      - '3000:3000'
+    container_name: criticine-local
+    image: criticine:local
+    volumes:
+      - ./src:/app/src:ro
+      - ./public:/app/public:ro
+    build:
+      context: .
+      dockerfile: dockerfile
+      target: dev
+    network_mode: 'bridge'
