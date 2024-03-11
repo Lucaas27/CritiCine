@@ -4,8 +4,8 @@ services:
   criticine-dev:
     ports:
       - '3000:3000'
-    container_name: criticine-local
-    image: criticine:local
+    container_name: criticine-dev
+    image: criticine:dev
     volumes:
       - ./src:/app/src:ro
       - ./public:/app/public:ro

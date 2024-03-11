@@ -7,7 +7,6 @@ COPY . .
 CMD ["npm", "run", "dev"]
 ##########################################################################################
 FROM nginx:latest as prod
-EXPOSE 3003
 COPY nginx.config /etc/nginx/conf.d/default.conf
 COPY dist /usr/share/nginx/html
 CMD ["nginx", "-g", "daemon off;"]
