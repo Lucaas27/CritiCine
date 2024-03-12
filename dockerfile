@@ -17,7 +17,7 @@ ARG NODE_ENV
 ENV NODE_ENV=$NODE_ENV
 RUN if [ "$NODE_ENV" = "production" ]; then \
     npm run build; \
-  elif [ "$NODE_ENV" = "staging" ]; then \
+  else [ "$NODE_ENV" = "staging" ]; then \
     npm run build:staging; \
   fi
 
