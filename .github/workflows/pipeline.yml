@@ -12,6 +12,7 @@ on:
 jobs:
   test:
     if: github.event_name == 'pull_request'
+    name: Test
     uses: Luccas27/pipelines/.github/workflows/test.yml@main
     permissions:
       actions: read
@@ -20,6 +21,7 @@ jobs:
 
   build-staging:
     if: github.event_name == 'pull_request'
+    name: Build Staging
     uses: Luccas27/pipelines/.github/workflows/build.yml@main
     needs: test
     with:
@@ -33,7 +35,9 @@ jobs:
 
   deploy-staging:
     if: github.event_name == 'pull_request'
+    name: Deploy Staging
     uses: Luccas27/pipelines/.github/workflows/deploy.yml@main
+    needs: [test, build-staging]
     with:
       dockercompose_filename: docker-compose.staging.yml
       environment: Staging
@@ -49,8 +53,8 @@ jobs:
 
   build-prod:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    name: Build Prod
     uses: Luccas27/pipelines/.github/workflows/build.yml@main
-    needs: test
     with:
       node_env: production
       app_name: criticine
@@ -62,7 +66,9 @@ jobs:
 
   deploy-prod:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    name: Deploy Prod
     uses: Luccas27/pipelines/.github/workflows/deploy.yml@main
+    needs: [build-prod]
     with:
       dockercompose_filename: docker-compose.prod.yml
       environment: Production
