@@ -5,11 +5,17 @@ on:
     types:
       - opened
       - synchronize
+    branches: ['main']
   workflow_dispatch:
 jobs:
-  ci:
-    name: CI
+  test:
+    name: Test
     uses: Luccas27/pipelines/.github/workflows/test.yml@main
+
+  code-ql:
+    name: Vulnerability scan
+    uses: Luccas27/pipelines/.github/workflows/code-ql.yml@main
+    needs: test
     permissions:
       actions: read
       contents: read
@@ -18,7 +24,7 @@ jobs:
   build:
     name: Build Staging
     uses: Luccas27/pipelines/.github/workflows/build.yml@main
-    needs: ci
+    needs: [test, code-ql]
     with:
       node_env: staging
       app_name: criticine
@@ -31,7 +37,7 @@ jobs:
   deploy:
     name: Deploy Staging
     uses: Luccas27/pipelines/.github/workflows/deploy.yml@main
-    needs: [ci, build]
+    needs: [test, build, code-ql]
     with:
       dockercompose_filename: docker-compose.staging.yml
       environment: Staging

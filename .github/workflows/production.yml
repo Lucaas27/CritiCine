@@ -6,9 +6,18 @@ on:
       - main
   workflow_dispatch:
 jobs:
+  code-ql:
+    name: Vulnerability scan
+    uses: Luccas27/pipelines/.github/workflows/code-ql.yml@main
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
   build:
     name: Build Prod
     uses: Luccas27/pipelines/.github/workflows/build.yml@main
+    needs: code-ql
     with:
       node_env: production
       app_name: criticine
@@ -21,7 +30,7 @@ jobs:
   deploy:
     name: Deploy Prod
     uses: Luccas27/pipelines/.github/workflows/deploy.yml@main
-    needs: [build]
+    needs: [build, code-ql]
     with:
       dockercompose_filename: docker-compose.prod.yml
       environment: Production
