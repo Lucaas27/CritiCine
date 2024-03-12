@@ -7,8 +7,7 @@ services:
     container_name: criticine-dev
     image: criticine:dev
     volumes:
-      - ./src:/app/src:ro
-      - ./public:/app/public:ro
+      - .:/app
     build:
       context: .
       dockerfile: dockerfile
