@@ -12,6 +12,8 @@ services:
       context: .
       dockerfile: dockerfile
       target: prod
+      args:
+        - NODE_ENV=staging
 networks:
   nginx_default:
     external: true

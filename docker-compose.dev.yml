@@ -13,4 +13,6 @@ services:
       context: .
       dockerfile: dockerfile
       target: dev
+      args:
+        - NODE_ENV=development
     network_mode: 'bridge'
