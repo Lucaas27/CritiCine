@@ -15,7 +15,7 @@ CMD ["npm", "run", "dev"]
 FROM base as build
 ARG NODE_ENV
 ENV NODE_ENV=$NODE_ENV
-RUN RUN if [ "$NODE_ENV" = "production" ]; then \
+RUN if [ "$NODE_ENV" = "production" ]; then \
       npm run build; \
     else \
       npm run build:staging; \
