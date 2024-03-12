@@ -7,7 +7,7 @@ services:
     ports:
       - '${PORT_STAGING}:3000'
     container_name: criticine-staging
-    image: '${STAGING_TAG}'
+    image: lucas2708/criticine:staging
     build:
       context: .
       dockerfile: dockerfile
