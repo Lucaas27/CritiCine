@@ -7,7 +7,7 @@ services:
     ports:
       - '${PORT_PROD}:3000'
     container_name: criticine-prod
-    image: lucas2708/criticine:latest
+    image: lucas2708/criticine:production
     build:
       context: .
       dockerfile: dockerfile
