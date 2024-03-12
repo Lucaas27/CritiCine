@@ -7,11 +7,13 @@ services:
     ports:
       - '${PORT_PROD}:3000'
     container_name: criticine-prod
-    image: '${PROD_TAG}'
+    image: lucas2708/criticine:latest
     build:
       context: .
       dockerfile: dockerfile
       target: prod
+      args:
+        - NODE_ENV=production
 networks:
   nginx_default:
     external: true

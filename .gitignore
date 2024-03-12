@@ -4,6 +4,7 @@
 
 ### Linux ###
 *~
+.secrets.yml
 
 # temporary files which can be created if a process still has a handle open of a deleted file
 .fuse_hidden*
@@ -95,6 +96,8 @@ web_modules/
 # dotenv environment variable files
 .history
 .env*
+!.env.enc
+!.env.*.enc
 !.env.*.local
 
 # parcel-bundler cache (https://parceljs.org/)
