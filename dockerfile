@@ -15,11 +15,11 @@ CMD ["npm", "run", "dev"]
 FROM base as build
 ARG NODE_ENV
 ENV NODE_ENV=$NODE_ENV
-RUN if [ "$NODE_ENV" = "production" ]; then \
-    npm run build; \
-  else [ "$NODE_ENV" = "staging" ]; then \
-    npm run build:staging; \
-  fi
+RUN RUN if [ "$NODE_ENV" = "production" ]; then \
+      npm run build; \
+    else \
+      npm run build:staging; \
+    fi
 
 # Production stage
 FROM nginx:latest as prod
