@@ -44,8 +44,6 @@ jobs:
     secrets:
       DOCKERHUB_USERNAME: ${{secrets.DOCKERHUB_USERNAME}}
       DOCKERHUB_TOKEN: ${{secrets.DOCKERHUB_TOKEN}}
-      GPG_PUBLIC_KEY: ${{secrets.GPG_PUBLIC_KEY}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
       SSH_HOST: ${{secrets.SSH_HOST}}
       SSH_USER: ${{secrets.SSH_USER}}
       SSH_KEY: ${{secrets.SSH_KEY}}
@@ -75,8 +73,6 @@ jobs:
     secrets:
       DOCKERHUB_USERNAME: ${{secrets.DOCKERHUB_USERNAME}}
       DOCKERHUB_TOKEN: ${{secrets.DOCKERHUB_TOKEN}}
-      GPG_PUBLIC_KEY: ${{secrets.GPG_PUBLIC_KEY}}
-      GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
       SSH_HOST: ${{secrets.SSH_HOST}}
       SSH_USER: ${{secrets.SSH_USER}}
       SSH_KEY: ${{secrets.SSH_KEY}}
