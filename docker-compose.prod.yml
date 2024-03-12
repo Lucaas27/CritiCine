@@ -4,10 +4,9 @@ services:
   criticine-prod:
     networks:
       - nginx_default
-    ports:
-      - '${PORT_PROD}:3000'
+    # No need to expose a port as container will be behind reverse proxys
     container_name: criticine-prod
-    image: lucas2708/criticine:latest
+    image: lucas2708/criticine:production
     build:
       context: .
       dockerfile: dockerfile
