@@ -12,6 +12,10 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        logo: ['Potta One', 'system-ui'],
+        body: ['Lato', 'sans-serif'],
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
